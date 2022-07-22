@@ -1,0 +1,1032 @@
+Skip to content
+ 
+Search…
+All gists
+Back to GitHub
+@Vivek-Katkar 
+@vishymails
+vishymails/gist:33a68c7dafe7dc9de6cf3e15a49480d3
+Last active 2 minutes ago • Report abuse
+0
+0
+Code
+Revisions
+8
+<script src="https://gist.github.com/vishymails/33a68c7dafe7dc9de6cf3e15a49480d3.js"></script>
+gistfile1.txt
+http://notepad.pw/microservices2022
+
+
+PROGRAM
+COMPONENT 
+SERVICE 
+
+
+SERVER 
+
+100%
+
+
+MICROSERVICE
+
+MACROSERVICE = MICROSERVICE ++
+
+
+
+JAVA 
+-------
+
+JEE
+SPRING BOOT 
+
+
+PYTHON 
+-------------
+
+FLASK
+DJANGO
+FASTAPI
+
+
+.NET 
+-------
+C# SERVICES 
+
+
+
+
+1. CREATE FAT JAR FILE 
+2. DEFINE DOCKERFILE MANIFEST 
+3. CREATE AN IMAGE 
+4. CREATE CONTAINER(S) OUT OF AN IMAGE 
+5. PUSH IMAGE TO PUBLIC ACCESS REPOSITORY 
+6. CREATE DEPLOYMENT MANIFEST 
+7. RUN REPLICATION SERVICE OVER KUBERNETES SERVICE 
+8. TEST REPLICATION OF CONTAINERS
+
+
+
+
+
+FROM openjdk:16-alpine3.13
+
+RUN apk --no-cache add curl 
+
+LABEL MAINTAINER Dr.Rao
+
+EXPOSE 8080
+
+COPY FirstExample-0.0.1-SNAPSHOT.jar .
+
+CMD java -jar FirstExample-0.0.1-SNAPSHOT.jar
+
+
+
+
+
+
+431  CD DEPLOYMENT\ /
+  432  cd DEPLOYMENT\ /
+  433  cd DEPLOYMENT
+  434  ls
+  435  java -jar FirstExample-0.0.1-SNAPSHOT.jar 
+  436  clear
+  437  ls
+  438  docker images
+  439  docker build -t citiservice:1.0 .
+  440  docker images
+  441  docker run -p 9000:8080 citiservice:1.0
+  442  docker run -d -p 9000:8080 citiservice:1.0
+  443  docker run -d -p 9001:8080 citiservice:1.0
+  444  docker run -d -p 9002:8080 citiservice:1.0
+  445  docker ps 
+  446  history 
+
+
+
+
+
+
+
+
+
+
+
+
+(base) Admins-MacBook-Pro:DEPLOYMENT  apple$ docker build -t citiservice:1.0 .
+[+] Building 41.6s (9/9) FINISHED                                                                                                 
+ => [internal] load build definition from Dockerfile                                                                         0.0s
+ => => transferring dockerfile: 227B                                                                                         0.0s
+ => [internal] load .dockerignore                                                                                            0.0s
+ => => transferring context: 2B                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/openjdk:16-alpine3.13                                                     4.2s
+ => [auth] library/openjdk:pull token for registry-1.docker.io                                                               0.0s
+ => [1/3] FROM docker.io/library/openjdk:16-alpine3.13@sha256:49d822f4fa4deb5f9d0201ffeec9f4d113bcb4e7e49bd6bc063d3ba93aac  32.7s
+ => => resolve docker.io/library/openjdk:16-alpine3.13@sha256:49d822f4fa4deb5f9d0201ffeec9f4d113bcb4e7e49bd6bc063d3ba93aacb  0.0s
+ => => sha256:49d822f4fa4deb5f9d0201ffeec9f4d113bcb4e7e49bd6bc063d3ba93aacbcae 319B / 319B                                   0.0s
+ => => sha256:f9be8e89a2bbf973dcd6c286f85bb0f68a8f9d5fa7c6241eb59f07add4a24789 951B / 951B                                   0.0s
+ => => sha256:2aa8569968b8d76c8e121516f183b8abc2b639158973a5812a2a6c474a80c63a 3.48kB / 3.48kB                               0.0s
+ => => sha256:4c0d98bf9879488e0407f897d9dd4bf758555a78e39675e72b5124ccf12c2580 2.81MB / 2.81MB                               1.1s
+ => => sha256:6f1834e342ac63f74ab268f59b78219089f04f37c6c39e469afc0292192b9c2d 928.24kB / 928.24kB                           1.1s
+ => => sha256:78f4563ac5cfaa5b85c77a78809e4a4d118e39ea769eff648554e6b66d21ad3f 185.96MB / 185.96MB                          18.9s
+ => => extracting sha256:4c0d98bf9879488e0407f897d9dd4bf758555a78e39675e72b5124ccf12c2580                                    1.1s
+ => => extracting sha256:6f1834e342ac63f74ab268f59b78219089f04f37c6c39e469afc0292192b9c2d                                    0.5s
+ => => extracting sha256:78f4563ac5cfaa5b85c77a78809e4a4d118e39ea769eff648554e6b66d21ad3f                                   13.4s
+ => [internal] load build context                                                                                            2.1s
+ => => transferring context: 17.63MB                                                                                         2.1s
+ => [2/3] RUN apk --no-cache add curl                                                                                        4.0s
+ => [3/3] COPY FirstExample-0.0.1-SNAPSHOT.jar .                                                                             0.2s
+ => exporting to image                                                                                                       0.3s 
+ => => exporting layers                                                                                                      0.3s 
+ => => writing image sha256:fd68e8144b4133e7fa9c01b8474e8e933c85ebdd2098caca9e96adeddc8ed92e                                 0.0s
+ => => naming to docker.io/library/citiservice:1.0                                                                           0.0s
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+
+
+
+
+
+(base) Admins-MacBook-Pro:DEPLOYMENT  apple$ docker images
+REPOSITORY                           TAG                                                     IMAGE ID       CREATED         SIZE
+citiservice                          1.0                                                     fd68e8144b41   7 seconds ago   344MB
+
+
+
+
+
+(base) Admins-MacBook-Pro:DEPLOYMENT  apple$ docker run -p 9000:8080 citiservice:1.0
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.7.1)
+
+2022-07-19 05:15:43.678  INFO 1 --- [           main] com.bvr.FirstExampleApplication          : Starting FirstExampleApplication v0.0.1-SNAPSHOT using Java 16-ea on 94013d1b4992 with PID 1 (/FirstExample-0.0.1-SNAPSHOT.jar started by root in /)
+2022-07-19 05:15:43.686  INFO 1 --- [           main] com.bvr.FirstExampleApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-07-19 05:15:47.324  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-07-19 05:15:47.344  INFO 1 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-07-19 05:15:47.346  INFO 1 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-07-19 05:15:47.780  INFO 1 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-07-19 05:15:47.781  INFO 1 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3624 ms
+2022-07-19 05:15:48.766  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-07-19 05:15:48.811  INFO 1 --- [           main] com.bvr.FirstExampleApplication          : Started FirstExampleApplication in 6.444 seconds (JVM running for 7.419)
+2022-07-19 05:16:09.441  INFO 1 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-19 05:16:09.442  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-07-19 05:16:09.446  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+
+(base) Admins-MacBook-Pro:DEPLOYMENT  apple$ docker run -d -p 9000:8080 citiservice:1.0
+860c3029b3d6528e2bdfc5581acd7e33812ad4d130cdd8f1676e17d6e1f39b5f
+
+
+(base) Admins-MacBook-Pro:DEPLOYMENT  apple$ docker run -d -p 9001:8080 citiservice:1.0
+ae0beedb5969d1c4896723290061cf632e3fd244e0692099f291e3a7bee4e7b6
+
+
+(base) Admins-MacBook-Pro:DEPLOYMENT  apple$ docker run -d -p 9002:8080 citiservice:1.0
+79379555264cec87cd6c587a7a73ca659aee687e3d9a7389bc88404c51f3a5e9
+
+
+
+(base) Admins-MacBook-Pro:DEPLOYMENT  apple$ docker ps 
+CONTAINER ID   IMAGE                  COMMAND                  CREATED          STATUS          PORTS                    NAMES
+79379555264c   citiservice:1.0        "/bin/sh -c 'java -j…"   6 seconds ago    Up 5 seconds    0.0.0.0:9002->8080/tcp   great_hawking
+ae0beedb5969   citiservice:1.0        "/bin/sh -c 'java -j…"   13 seconds ago   Up 12 seconds   0.0.0.0:9001->8080/tcp   quirky_sinoussi
+860c3029b3d6   citiservice:1.0        "/bin/sh -c 'java -j…"   21 seconds ago   Up 21 seconds   0.0.0.0:9000->8080/tcp   musing_yalow
+(base) Admins-MacBook-Pro:DEPLOYMENT  apple$ history 
+
+
+
+
+
+
+
+
+
+PROFILES 
+
+
+
+logging:
+  level:
+    .: error
+    org.springframework: ERROR
+    com.ibm: ERROR
+
+spring:
+  profiles:
+    active: "dev"
+  main:
+    banner-mode: "off"
+
+server:
+  email: default@ibm.com
+
+---
+
+spring:
+  profiles: dev
+server:
+  email: dev@ibm.com
+  cluster:
+    - ip: 127.0.0.1
+      path: /dev1
+    - ip: 127.0.0.2
+      path: /dev2
+    - ip: 127.0.0.3
+      path: /dev3
+
+---
+
+spring:
+  profiles: prod
+server:
+  email: prod@ibm.com
+  cluster:
+    - ip: 192.168.0.1
+      path: /app1
+    - ip: 192.168.0.2
+      path: /app2
+    - ip: 192.168.0.3
+      path: /app3
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      package com.bvr.config;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+
+@Component
+@ConfigurationProperties("server")
+public class ServerProperties {
+
+	public ServerProperties() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	private String email;
+	private List<Cluster> cluster = new ArrayList<>();
+	
+	
+	public static class Cluster {
+		private String ip;
+		private String path;
+		
+		
+		public String getIp() {
+			return ip;
+		}
+		public void setIp(String ip) {
+			this.ip = ip;
+		}
+		public String getPath() {
+			return path;
+		}
+		public void setPath(String path) {
+			this.path = path;
+		}
+		
+		
+		@Override
+		public String toString() {
+			return "Cluster [ip=" + ip + ", path=" + path + "]";
+		}
+		
+		
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public List<Cluster> getCluster() {
+		return cluster;
+	}
+
+
+	public void setCluster(List<Cluster> cluster) {
+		this.cluster = cluster;
+	}
+
+
+	@Override
+	public String toString() {
+		return "ServerProperties [email=" + email + ", cluster=" + cluster + ", getEmail()=" + getEmail()
+				+ ", getCluster()=" + getCluster() + "]";
+	}
+
+
+	
+	
+	
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+package com.bvr;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.bvr.config.ServerProperties;
+
+@SpringBootApplication
+public class ConfigProfilesServiceApplication implements CommandLineRunner {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ConfigProfilesServiceApplication.class, args);
+	}
+
+	@Autowired
+	private ServerProperties serverProperties;
+	
+	
+	@Override
+	public void run(String... args) throws Exception {
+		// TODO Auto-generated method stub
+		System.out.println(serverProperties);
+	}
+	
+	
+	
+	
+
+}
+
+
+
+
+
+
+@Profile (QUERY)
+
+
+
+import org.springframework.jndi.JndiObjectFactoryBean;
+
+public class DBConfig {
+
+
+    @Bean
+    @Profile("dev")
+    public DataSource defaultDB() {
+        return new EmbeddedDatabaseBuilder()
+        .setType(EmbeddedDatabaseType.H2)
+        .addScript("classpath:schema.sql")
+        .build();
+    }
+
+    @Bean
+    @Profile("prod")
+    public DataSource jndiDataSource() {
+
+        JndiObjectFactoryBean jndiObjectFactoryBean = new JndiObjectFactoryBean();
+        //all props can be declared
+        return (DataSource) jndiObjectFactoryBean.getObject();
+    }
+
+    @Bean
+    @Profile("qa")
+    public DataSource qaDataSource() {
+
+        JndiObjectFactoryBean jndiObjectFactoryBean = new JndiObjectFactoryBean();
+        //all props can be declared
+        return (DataSource) jndiObjectFactoryBean.getObject();
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package com.bvr.resources;
+
+import org.springframework.http.HttpEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.bvr.bean.PropertyAccessBean;
+import com.bvr.bean.PropertyAccessValue;
+
+@RestController
+@RequestMapping("/access")
+public class PropertyFileAccessControllerResource {
+
+	public PropertyFileAccessControllerResource() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	@Autowired
+	PropertyAccessBean propertyAccessBean;
+	
+	@GetMapping("accessPropertyfile")
+	public PropertyAccessValue accessPropertyFile() {
+		refreshActuator();
+		return new PropertyAccessValue(propertyAccessBean.getName(), propertyAccessBean.getDescription());
+		
+	}
+	
+	public void refreshActuator() {
+		RestTemplate restTemplate = new RestTemplate();
+		
+		final String baseUrl = "http://localhost:8010/actuator/refresh";
+		
+		HttpHeaders headers = new HttpHeaders();
+		
+		headers.set("Content-Type", "application/json");
+		
+		HttpEntity entity = new HttpEntity(headers);
+		
+		ResponseEntity<String> results = restTemplate.postForEntity(baseUrl, entity, String.class);
+	}
+
+}
+
+
+
+
+
+
+
+
+
+spring :
+  application :
+    name : property-access-service
+
+  config :
+    import : optional:configserver:http://localhost:8888
+
+  profiles :
+    active : qa
+
+server :
+  port : ${port:8010}
+
+  
+management :
+  endpoints :
+    web :
+      exposure :
+        include : refresh
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.5.5</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.bvr</groupId>
+	<artifactId>movie-catalog-service</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>movie-catalog-service</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>11</java.version>
+		<spring-cloud.version>2020.0.3</spring-cloud.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+			<version>2.2.9.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package com.bvr;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.web.client.RestTemplate;
+
+@SpringBootApplication
+@EnableEurekaClient
+@EnableCircuitBreaker
+public class MovieCatalogServiceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MovieCatalogServiceApplication.class, args);
+	}
+	
+	@LoadBalanced
+	@Bean
+	public RestTemplate getRestTemplate() {
+		
+		
+		HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();
+		
+		return new RestTemplate(clientHttpRequestFactory);
+
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+package com.bvr.resources;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.bvr.model.CatalogItem;
+import com.bvr.model.Movie;
+import com.bvr.model.UserRating;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+
+@RestController
+@RequestMapping("/catalog")
+public class CatalogResource {
+
+	public CatalogResource() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	
+	
+	@RequestMapping("/{userId}")
+	@HystrixCommand(fallbackMethod = "getFallbackCatalog")
+	public List<CatalogItem> getCatalog(@PathVariable("userId") String userId) {
+		UserRating userRating = restTemplate.getForObject("http://ratings-data-service/ratingsdata/user/" + userId, UserRating.class);
+		
+		return userRating.getRatings().stream()
+				.map(rating -> {
+					Movie movie = restTemplate.getForObject("http://movie-info-service/movies/" + rating.getMovieId() , Movie.class);
+					return new CatalogItem(movie.getName(), movie.getDescription(), rating.getRating());
+				})
+				.collect(Collectors.toList());
+	}
+	
+	
+	public List<CatalogItem> getFallbackCatalog(@PathVariable("userId") String userId) {
+		return Arrays.asList(new CatalogItem("No Movie", "", 0));
+	}
+		
+	
+	
+
+}
+
+
+
+
+
+PROXY HYSTRIX DEMO 
+
+
+
+
+package com.bvr.services;
+
+import java.util.Arrays;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.client.RestTemplate;
+
+import com.bvr.model.Rating;
+import com.bvr.model.UserRating;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+
+@Service
+public class UserRatingInfo {
+
+	public UserRatingInfo() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	@HystrixCommand(fallbackMethod = "getFallbackUserRating")
+	public UserRating getUserRating(@PathVariable("userId") String userId) {
+		
+		return restTemplate.getForObject("http://ratings-data-service/ratingsdata/user/" + userId, UserRating.class);
+	}
+	
+	
+	public UserRating getFallbackUserRating(@PathVariable("userId") String userId) {
+		
+		UserRating userRating = new UserRating();
+		
+		userRating.setUserId(userId);
+		userRating.setRatings(Arrays.asList(new Rating("800", 0)));
+		return userRating;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+package com.bvr.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.bvr.model.CatalogItem;
+import com.bvr.model.Movie;
+import com.bvr.model.Rating;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+
+@Service
+public class MovieInfo {
+
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	@HystrixCommand(fallbackMethod = "getFallbackCatalogItem")
+	public CatalogItem getCatalogItem(Rating rating) {
+		Movie movie = restTemplate.getForObject("http://movie-info-service/movies/" + rating.getMovieId() , Movie.class);
+		return new CatalogItem(movie.getName(), movie.getDescription(), rating.getRating());
+		
+	}
+
+	public CatalogItem getFallbackCatalogItem(Rating rating) {
+		return new CatalogItem("Movie name not found", "", rating.getRating());
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+package com.bvr.resources;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.bvr.model.CatalogItem;
+import com.bvr.model.Movie;
+import com.bvr.model.UserRating;
+import com.bvr.services.MovieInfo;
+import com.bvr.services.UserRatingInfo;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+
+@RestController
+@RequestMapping("/catalog")
+public class CatalogResource {
+
+	public CatalogResource() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	@Autowired
+	MovieInfo movieInfo;
+	
+	@Autowired
+	UserRatingInfo userRatingInfo;
+	
+	
+	
+	@RequestMapping("/{userId}")
+	public List<CatalogItem> getCatalog(@PathVariable("userId") String userId) {
+		UserRating userRating = userRatingInfo.getUserRating(userId);
+		
+		return userRating.getRatings().stream()
+				.map(rating -> movieInfo.getCatalogItem(rating))
+				.collect(Collectors.toList());
+	}
+	
+	
+	
+
+}
+
+
+
+
+
+HYSTRIX DASHBOARD
+
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.5.5</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.bvr</groupId>
+	<artifactId>movie-catalog-service</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>movie-catalog-service</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>11</java.version>
+		<spring-cloud.version>2020.0.3</spring-cloud.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+			<version>2.2.9.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+			<version>2.2.9.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+
+
+
+
+
+
+
+package com.bvr;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.web.client.RestTemplate;
+
+@SpringBootApplication
+@EnableEurekaClient
+@EnableCircuitBreaker
+@EnableHystrixDashboard
+public class MovieCatalogServiceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MovieCatalogServiceApplication.class, args);
+	}
+	
+	@LoadBalanced
+	@Bean
+	public RestTemplate getRestTemplate() {
+		
+		
+		HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();
+		
+		return new RestTemplate(clientHttpRequestFactory);
+
+	}
+}
+
+
+
+
+
+
+
+
+
+http://localhost:8881/actuator
+
+COPY URL OF HYSTRIX STREAM
+
+
+http://localhost:8881/hystrix
+
+PASTE URL IN TO THE TEXT FIELD 
+
+PLACE CALLS USING POSTMAN/ARC
+
+WATCH THE CHANGES 
+
+@Vivek-Katkar
+ 
+Leave a comment
+No file chosen
+Attach files by dragging & dropping, selecting or pasting them.
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+You have no unread notifications
